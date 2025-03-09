@@ -4,6 +4,7 @@ import Intensity from './Intensity'
 import ACE from './ACE'
 import retiredImage from "../../public/retired.png"
 import CycloneIcon from '@mui/icons-material/Cyclone'
+import { ScrollView } from 'react-native-gesture-handler'
 
 const Storm = () => {
   const { year, storm, stormId } = useContext(Context)
@@ -125,57 +126,57 @@ const Storm = () => {
   }, [storm]);
 
   return (
-    <div className="storm">
-      <div className='flex md:flex-row flex-col w-full items-center max-w-[48rem] justify-between gap-10'>
-        <div className='flex flex-col gap-2'>
-          <a 
+    <ScrollView className="storm">
+      <View className='flex md:flex-row flex-col w-fViewl items-center max-w-[48rem] justify-between gap-10'>
+        <View className='flex flex-col gap-2'>
+          <View
             target='_blank' 
             className={`w-80 h-96 bg-cover bg-center flex flex-col items-center justify-center rounded-xl bg-gray-400 ${retired && '!justify-end pb-2 sm:pb-4'} ${year < 1995 && 'pointer-events-none'}`}
             style={{backgroundImage: `url(${image})`}} 
             href={`https://www.nhc.noaa.gov/data/tcr/${stormId}.pdf`}
           >
-            {image == "" && <div className='flex flex-col gap-5 items-center'>
+            {image == "" && <View className='flex flex-col gap-5 items-center'>
               <CycloneIcon className='text-gray-600 !text-8xl'/>
-              <h1 className='text-2xl font-bold text-gray-600'>Image Unavailable</h1>
-            </div>}
+              <Text className='text-2xl font-bold text-gray-600'>Image Unavailable</Text>
+            </View>}
             {retired && <img className='w-60' src={retiredImage}/>}
-          </a>
-        </div>
-        <ul className='flex flex-col font-bold gap-1.5 text-white text-center w-full'>
-          <h1 className='text-3xl' style={{color:textColor}}>{stormName}</h1>
-          <h2 className='text-xl mb-1'>{duration}</h2>
-          <li>
-            <h2>Maximum Wind</h2>
-            <h2>{maxWind} kt</h2>
-          </li>
-          {landfalls.length > 0 && <li>
-            <h2>Maximum Inland Wind</h2>
-            <h2>{inlandMaxWind} kt</h2>
-          </li>}
-          <li>
-            <h2>Minimum Pressure</h2>
-            <h2>{minPressure != 9999 && minPressure != -999 ? (`${minPressure} mb`) : 'Unknown'}</h2>
-          </li>
-          {landfalls.length > 0 && <li>
-            <h2>Minimum Inland Pressure</h2>
-            <h2>{inlandMinPressure ? (`${inlandMinPressure} mb`) : 'Unknown'}</h2>
-          </li>}
-          <li>
-            <h2>Dead/Missing</h2>
-            <h2>{deadOrMissing}</h2>
-          </li>
-          <li>
-            <h2>Cost (Million USD)</h2>
-            <h2>{cost}</h2>
-          </li>
-        </ul>
-      </div>
-      <div className="charts">
+          </View>
+        </View>
+        <View className='flex flex-col font-bold gap-1.5 text-white text-center w-fViewl'>
+          <Text className='text-3xl' style={{color:textColor}}>{stormName}</Text>
+          <Text className='text-xl mb-1'>{duration}</Text>
+          <View>
+            <Text>Maximum Wind</Text>
+            <Text>{maxWind} kt</Text>
+          </View>
+          {landfalls.length > 0 && <View>
+            <Text>Maximum Inland Wind</Text>
+            <Text>{inlandMaxWind} kt</Text>
+          </View>}
+          <View>
+            <Text>Minimum Pressure</Text>
+            <Text>{minPressure != 9999 && minPressure != -999 ? (`${minPressure} mb`) : 'Unknown'}</Text>
+          </View>
+          {landfalls.length > 0 && <View>
+            <Text>Minimum Inland Pressure</Text>
+            <Text>{inlandMinPressure ? (`${inlandMinPressure} mb`) : 'Unknown'}</Text>
+          </View>}
+          <View>
+            <Text>Dead/Missing</Text>
+            <Text>{deadOrMissing}</Text>
+          </View>
+          <View>
+            <Text>Cost (Million USD)</Text>
+            <Text>{cost}</Text>
+          </View>
+        </View>
+      </View>
+      <View className="charts">
         <Intensity/>
         <ACE/>
-      </div>
-    </div>
+      </View>
+    </ScrollView>
   )
 }
 
-export default Storm
+export defaViewt Storm

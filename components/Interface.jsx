@@ -31,17 +31,17 @@ const Interface = () => {
   }, [season])
 
   return (
-    <div className="xl:w-1/2 xl:h-full w-screen h-1/2 bg-blue-950 p-10 overflow-auto flex flex-col gap-10">
-      <header className="flex justify-between w-full">
-        <div className="flex items-center">
-          <img src={cyclone} className="h-10 mr-2"/>
-          <h1 className="storm-font text-4xl text-white font-bold">CYCLOPEDIA</h1>
-        </div>
-        <button onClick={toggleStats} className={`button ${seasonStats ? 'bg-blue-600' : 'bg-purple-600'}`} variant="contained">
-          <h1 className="font-sans font-bold">{seasonStats ? ("Storms") : ("Season")}</h1>
-        </button>
-      </header>
-      <div className="flex gap-5 w-full justify-center">
+    <ScrollView className="xl:w-1/2 xl:h-full w-screen h-1/2 bg-blue-950 p-10 overflow-auto flex flex-col gap-10">
+      <View className="flex justify-between w-full">
+        <View className="flex items-center">
+          <Image src={cyclone} className="h-10 mr-2"/>
+          <Text className="storm-font text-4xl text-white font-bold">CYCLOPEDIA</Text>
+        </View>
+        <Button onClick={toggleStats} className={`button ${seasonStats ? 'bg-blue-600' : 'bg-purple-600'}`} variant="contained">
+          <Text className="font-sans font-bold">{seasonStats ? ("Storms") : ("Season")}</Text>
+        </Button>
+      </View>
+      <View className="flex gap-5 w-full justify-center">
         <Select className="select" value={basin} onChange={(e) => {setBasin(e.target.value)}}>
           <MenuItem value="atl">Atlantic</MenuItem>
           <MenuItem value="pac">Pacific</MenuItem>
@@ -58,13 +58,13 @@ const Interface = () => {
             return (<MenuItem key={id} value={id}>{name}</MenuItem>);
           })}
         </Select>
-        {year >= 2004 && <div className="flex items-center gap-1">
+        {year >= 2004 && <View className="flex items-center gap-1">
           <Checkbox className="!text-white !p-0" onChange={(e) => {setWindField(e.target.checked)}}/>
-          <h1 className="text-white font-bold">Wind Field</h1>
-        </div>}
-      </div>
+          <Text className="text-white font-bold">Wind Field</Text>
+        </View>}
+      </View>
       {seasonStats === false ? <Storm/> : <Season/>}
-    </div>
+    </ScrollView>
   )
 }
 

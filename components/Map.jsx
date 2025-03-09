@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import { Context } from "../App";
 import { MapContainer, Polyline, TileLayer, Popup, Marker, Polygon } from "react-leaflet";
-import { divIcon } from "leaflet";
+import { ViewIcon } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { IconButton } from "@mui/material";
 import FullscreenIcon from '@mui/icons-material/Fullscreen';
@@ -33,7 +33,7 @@ const Map = () => {
 
   const dot = (color) => {
     return (
-      new divIcon({
+      new ViewIcon({
         className: 'bg-opacity-0',
         html: `<svg fill=${color} viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle stroke="black" stroke-width="10" cx="50" cy="50" r="40" /></svg>`,
         iconSize: [10, 10]
@@ -43,7 +43,7 @@ const Map = () => {
 
   const strike = (color) => {
     return (
-      new divIcon({
+      new ViewIcon({
         className: 'bg-opacity-0',
         html: 
           `<svg fill=${color}
@@ -160,19 +160,19 @@ const Map = () => {
       return (
         <Marker key={i} position={coords} icon={icon} eventHandlers={{click:() => {setStormId(id)}}}>
           <Popup className="w-64 font-bold">
-            <h1 className="text-md">{fullName}</h1>
-            <h1 className="my-1">{date} at {time} UTC</h1>
-            <h1>Maximum Wind: {wind} kt</h1>
-            <h1>Minimum Pressure: {pressure ? `${pressure} mb` : 'Unknown'}</h1>
+            <Text className="text-md">{fullName}</Text>
+            <Text className="my-1">{date} at {time} UTC</Text>
+            <Text>Maximum Wind: {wind} kt</Text>
+            <Text>Minimum Pressure: {pressure ? `${pressure} mb` : 'Unknown'}</Text>
           </Popup>
         </Marker>
       )
     })
     return (
-      <div key={id}>
+      <View key={id}>
         <Polyline positions={positions} color="gray" opacity={.25}/>
         {points}
-      </div>
+      </View>
     )
   })  
 
@@ -207,13 +207,13 @@ const Map = () => {
       const points34kt = [];  
       calculatePoints(lat, lng, points34kt, point["34kt_wind_nm"]);
       return (
-        <div key={i}>
+        <View key={i}>
           <Polygon positions={points34kt} color="yellow">
             <Popup className="font-bold">
-              <h1 className="text-md">34+ kt</h1>
+              <Text className="text-md">34+ kt</Text>
             </Popup>
           </Polygon>
-        </div>
+        </View>
       )
     })
   
@@ -222,13 +222,13 @@ const Map = () => {
       const points50kt = [];  
       calculatePoints(lat, lng, points50kt, point["50kt_wind_nm"]);
       return (
-        <div key={i}>
+        <View key={i}>
           <Polygon positions={points50kt} color="orange">
             <Popup className="font-bold">
-              <h1 className="text-md">50+ kt</h1>
+              <Text className="text-md">50+ kt</Text>
             </Popup>
           </Polygon>
-        </div>
+        </View>
       )
     })
   
@@ -237,13 +237,13 @@ const Map = () => {
       const points64kt = [];  
       calculatePoints(lat, lng, points64kt, point["64kt_wind_nm"]);
       return (
-        <div key={i}>
+        <View key={i}>
           <Polygon positions={points64kt} color="red">
             <Popup className="font-bold">
-              <h1 className="text-md">64+ kt</h1>
+              <Text className="text-md">64+ kt</Text>
             </Popup>
           </Polygon>
-        </div>
+        </View>
       )
     })
   }
