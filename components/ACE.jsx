@@ -35,7 +35,17 @@ const ACE = () => {
     setTotalACE(totalACE)
   }, [storm])
 
-  
+  const data = {
+    labels: dates,
+    datasets: [
+      {
+        data: ACE?.map((ACE) => {return ACE.toFixed(1)}),
+        borderColor: "purple",
+        backgroundColor: "pink"
+      },
+    ]
+  }
+
   const options = {
     responsive: true,
     plugins: {
@@ -49,18 +59,7 @@ const ACE = () => {
     },
   };
 
-  const data = {
-    labels: dates,
-    datasets: [
-      {
-        data: ACE?.map((ACE) => {return ACE.toFixed(1)}),
-        borderColor: "purple",
-        backgroundColor: "pink"
-      },
-    ]
-  }
-
-  return <LineChart options={options} data={data}/>
+  return <LineChart data={data} options={options} width={Dimensions.get('window').width} height={220} bezier/>
 }
 
 export default ACE

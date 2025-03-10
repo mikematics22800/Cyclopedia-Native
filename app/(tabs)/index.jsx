@@ -2,11 +2,11 @@ import { useState, useEffect, createContext } from "react"
 import "./index.css"
 import { View, Image, Text } from "react-native"
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { getHurdat } from "./libs/hurdat"
+import { getHurdat } from "../../libs/hurdat"
 import Interface from "./components/Interface"
 import Map from "./components/Map"
 import cyclone from '../../assets/images/cyclone.png'
-import { sum } from "./libs/sum"
+import { sum } from "../../libs/sum"
 
 export const Context = createContext()
 

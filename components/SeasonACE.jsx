@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { Context } from '../App'
 import BarChart from './BarChart'
-import { sum } from '../libs/sum'
+import { Dimensions } from 'react-native'
 
 const SeasonACE = () => {
   const {names, seasonACE} = useContext(Context)
@@ -30,7 +30,7 @@ const SeasonACE = () => {
     },
   };
 
-  return <BarChart options={options} data={data}/>
+  return <BarChart data={data} options={options} width={Dimensions.get('window').width} height={220} verticalLabelRotation={30}/>
 }
 
 export default SeasonACE

@@ -27,20 +27,24 @@ const MaxWinds = () => {
       },
     ]
   }
-  const options = {
-    responsive: true,
-    plugins: {
-      legend: {
-        display: false
-      },
-      title: {
-        display: true,
-        text: 'Maximum Wind (kt)',
-      },
+  const chartConfig = {
+    backgroundColor: '#1cc910',
+    backgroundGradientFrom: '#eff3ff',
+    backgroundGradientTo: '#efefef',
+    decimalPlaces: 2,
+    color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+    labelColor: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+    style: {
+      borderRadius: 16,
+    },
+    propsForDots: {
+      r: '6',
+      strokeWidth: '2',
+      stroke: '#ffa726',
     },
   };
-  
-  return <BarChart options={options} data={data}/>
+
+  return <BarChart data={data} chartConfig={chartConfig} width={Dimensions.get('window').width} height={220} verticalLabelRotation={30}/>
 }
 
 export default MaxWinds

@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from 'react'
 import { Context } from '../App'
 import LineChart from './LineChart'
+import { Dimensions } from 'react-native'
 
 const Intensity = () => {
   const {storm, dates} = useContext(Context)
@@ -74,8 +75,7 @@ const Intensity = () => {
     },
   };
 
-
-  return <LineChart options={options} data={data}/>
+  return <LineChart data={data} options={options} width={Dimensions.get('window').width} height={220} bezier/>
 }
 
 export default Intensity

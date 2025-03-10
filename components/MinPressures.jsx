@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from 'react'
 import { Context } from '../App'
 import BarChart from './BarChart'
+import { Dimensions } from 'react-native'
 
 const MinPressures = () => {
   const {season, names} = useContext(Context)
@@ -46,7 +47,7 @@ const MinPressures = () => {
     }
   };
 
-  return <BarChart options={options} data={data}/>
+  return <BarChart data={data} options={options} width={Dimensions.get('window').width} height={220} verticalLabelRotation={30}/>
 }
 
 export default MinPressures

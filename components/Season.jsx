@@ -1,9 +1,11 @@
 import { useContext, useState, useEffect } from 'react'
 import { Context } from '../App'
+import { ScrollView, View, Text } from 'react-native' 
 import MaxWinds from './MaxWinds'
 import MinPressures from './MinPressures'
 import SeasonACE from './SeasonACE'
 import { sum } from '../libs/sum'
+
 
 const Season = () => {
   const {season, seasonACE} = useContext(Context)
@@ -30,35 +32,35 @@ const Season = () => {
   }, [season])
 
   return (
-    <div className='season'>
-      <ul className='flex flex-col gap-1.5 w-full max-w-[48rem] text-white font-bold'>
-        <li>
-          <h1>Tropical Cyclones</h1>
-          <h1>{season.length}</h1>
-        </li>
-        <li>
-          <h1>Accumulated Cyclone Energy</h1>
-          <h1>{sum(seasonACE).toFixed(1)}</h1>
-        </li>
-        <li>
-          <h1>Dead/Missing</h1>
-          <h1>{deadOrMissing}</h1>
-        </li>
-        <li>
-          <h1>Cost (Million USD)</h1>
-          <h1>${cost}</h1>
-        </li>
-        <li>
-          <h1>Retired Names</h1>
-          <h1>{retiredNames.length > 0 ? retiredNames.join(", ") : "None"}</h1>
-        </li>
-      </ul>
-      <div className="charts">
+    <ScrollView className='season'>
+      <View className='flex flex-col gap-1.5 w-full max-w-[48rem] text-white font-bold'>
+        <View>
+          <Text>Tropical Cyclones</Text>
+          <Text>{season.length}</Text>
+        </View>
+        <View>
+          <Text>Accumulated Cyclone Energy</Text>
+          <Text>{sum(seasonACE).toFixed(1)}</Text>
+        </View>
+        <View>
+          <Text>Dead/Missing</Text>
+          <Text>{deadOrMissing}</Text>
+        </View>
+        <View>
+          <Text>Cost (Million USD)</Text>
+          <Text>${cost}</Text>
+        </View>
+        <View>
+          <Text>Retired Names</Text>
+          <Text>{retiredNames.length > 0 ? retiredNames.join(", ") : "None"}</Text>
+        </View>
+      </View>
+      <View className="charts">
         <MaxWinds/>
         <MinPressures/>
         <SeasonACE/>
-      </div>
-    </div>
+      </View>
+    </ScrollView>
   )
 }
 

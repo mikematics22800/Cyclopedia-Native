@@ -21,7 +21,7 @@ const Storm = () => {
   const [inlandMinPressure, setInlandMinPressure] = useState('')
   const [cost, setCost] = useState('')
   const [deadOrMissing, setDeadOrMissing] = useState('')
-  
+
   useEffect(() => {
     setStormName(storm.id.split('_')[1])
 
@@ -126,7 +126,7 @@ const Storm = () => {
 
   return (
     <ScrollView className="storm">
-      <View className='flex md:flex-row flex-col w-fViewl items-center max-w-[48rem] justify-between gap-10'>
+      <View className='flex md:flex-row flex-col w-full items-center max-w-[48rem] justify-between gap-10'>
         <View className='flex flex-col gap-2'>
           <View
             target='_blank' 
@@ -141,7 +141,7 @@ const Storm = () => {
             {retired && <img className='w-60' src={retiredImage}/>}
           </View>
         </View>
-        <View className='flex flex-col font-bold gap-1.5 text-white text-center w-fViewl'>
+        <View className='flex flex-col font-bold gap-1.5 text-white text-center w-full'>
           <Text className='text-3xl' style={{color:textColor}}>{stormName}</Text>
           <Text className='text-xl mb-1'>{duration}</Text>
           <View>
@@ -178,4 +178,4 @@ const Storm = () => {
   )
 }
 
-export defaViewt Storm
+export default Storm
