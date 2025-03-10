@@ -1,10 +1,10 @@
 import { useContext, useState, useEffect } from 'react'
 import { Context } from '../App'
+import { ScrollView, View, Text } from 'react-native' 
 import Intensity from './Intensity'
 import ACE from './ACE'
 import retiredImage from "../../public/retired.png"
 import CycloneIcon from '@mui/icons-material/Cyclone'
-import { ScrollView } from 'react-native-gesture-handler'
 
 const Storm = () => {
   const { year, storm, stormId } = useContext(Context)
@@ -21,8 +21,7 @@ const Storm = () => {
   const [inlandMinPressure, setInlandMinPressure] = useState('')
   const [cost, setCost] = useState('')
   const [deadOrMissing, setDeadOrMissing] = useState('')
-  const [loading, setLoading] = useState(false)
-
+  
   useEffect(() => {
     setStormName(storm.id.split('_')[1])
 

@@ -1,12 +1,37 @@
-import { Chart, CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend } from "chart.js";
-import { Bar } from 'react-chartjs-2';
+import React from 'react';
+import { BarChart as RNBarChart } from 'react-native-chart-kit';
+import { Dimensions, View } from 'react-native';
 
-Chart.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend);
+const screenWidth = Dimensions.get('window').width;
 
-const BarChart = ({data, options}) => {
+const BarChart = ({ data, options }) => {
   return (
-    <Bar data={data} options={options}/>
-  )
-}
+    <View>
+      <RNBarChart
+        data={data}
+        width={screenWidth}
+        height={220}
+        chartConfig={{
+          backgroundColor: '#1cc910',
+          backgroundGradientFrom: '#eff3ff',
+          backgroundGradientTo: '#efefef',
+          decimalPlaces: 2,
+          color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+          labelColor: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+          style: {
+            borderRadius: 16,
+          },
+          propsForDots: {
+            r: '6',
+            strokeWidth: '2',
+            stroke: '#ffa726',
+          },
+        }}
+        verticalLabelRotation={30}
+        {...options}
+      />
+    </View>
+  );
+};
 
-export default BarChart
+export default BarChart;

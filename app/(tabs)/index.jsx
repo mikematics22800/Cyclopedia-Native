@@ -1,4 +1,7 @@
 import { useState, useEffect, createContext } from "react"
+import "./index.css"
+import { View, Image, Text } from "react-native"
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { getHurdat } from "./libs/hurdat"
 import Interface from "./components/Interface"
 import Map from "./components/Map"
@@ -20,32 +23,23 @@ function App() {
   const [seasonACE, setSeasonACE] = useState([])
 
   useEffect(() => {
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js').then(registration => {
-          console.log('ServiceWorker registration successful with scope: ', registration.scope);
-        }, err => {
-          console.log('ServiceWorker registration failed: ', err);
-        });
-      });
-    }
-  }, [])
-
-  useEffect(() => {
     if (year < 1949 && basin === 'pac') setYear(1949)
-    const cache = localStorage.getItem(`cyclopedia-${basin}-${year}`)
-    if (cache) {
-      setSeason(JSON.parse(cache))
-      setStormId(JSON.parse(cache)[0].id)
-    } else {
-      setSeason(null)
-      setStorm(null)
-      getHurdat(basin, year).then(data => {
-        setSeason(data)
-        setStormId(data[0].id)
-        localStorage.setItem(`cyclopedia-${basin}-${year}`, JSON.stringify(data))
-      })
+    const fetchCache = async () => {
+      const cache = await AsyncStorage.getItem(`cyclopedia-${basin}-${year}`)
+      if (cache) {
+        setSeason(JSON.parse(cache))
+        setStormId(JSON.parse(cache)[0].id)
+      } else {
+        setSeason(null)
+        setStorm(null)
+        getHurdat(basin, year).then(data => {
+          setSeason(data)
+          setStormId(data[0].id)
+          AsyncStorage.setItem(`cyclopedia-${basin}-${year}`, JSON.stringify(data))
+        })
+      }
     }
+    fetchCache()
   }, [basin, year])
 
   useEffect(() => {

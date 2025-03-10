@@ -1,9 +1,11 @@
 import { useState, useEffect, useContext } from "react";
 import { Context } from "../App";
+import { ScrollView, View, Text } from 'react-native' 
+import { Checkbox } from 'react-native-paper';
+import { Picker } from '@react-native-picker/picker';
 import cyclone from "../../public/cyclone.png"
 import Storm from "./Storm";
 import Season from "./Season";
-import { MenuItem, Select, Checkbox } from "@mui/material"
 
 const Interface = () => {
   const [seasonStats, setSeasonStats] = useState(false)
@@ -42,24 +44,36 @@ const Interface = () => {
         </Button>
       </View>
       <View className="flex gap-5 w-full justify-center">
-        <Select className="select" value={basin} onChange={(e) => {setBasin(e.target.value)}}>
-          <MenuItem value="atl">Atlantic</MenuItem>
-          <MenuItem value="pac">Pacific</MenuItem>
-        </Select>
-        <Select className="select" value={year} onChange={(e) => {setYear(e.target.value)}}>
+      <Picker
+          selectedValue={basin}
+          onValueChange={(itemValue) => setBasin(itemValue)}
+          style={{ height: 50, width: 150 }}
+        >
+          <Picker.Item label="Atlantic" value="atl" />
+          <Picker.Item label="Pacific" value="pac" />
+        </Picker>
+        <Picker
+          selectedValue={year}
+          onValueChange={(itemValue) => setYear(itemValue)}
+          style={{ height: 50, width: 150 }}
+        >
           {years.map((_, index) => {
             const selectedYear = 2023 - index;
-            return (<MenuItem key={index} value={selectedYear}>{selectedYear}</MenuItem>);
+            return (<Picker.Item key={index} label={`${selectedYear}`} value={selectedYear} />);
           })}
-        </Select>
-        <Select className="select" value={stormId} onChange={(e) => {setStormId(e.target.value)}}>
+        </Picker>
+        <Picker
+          selectedValue={stormId}
+          onValueChange={(itemValue) => setStormId(itemValue)}
+          style={{ height: 50, width: 150 }}
+        >
           {stormIds?.map((id) => {
             const name = id.split('_')[1]
-            return (<MenuItem key={id} value={id}>{name}</MenuItem>);
+            return (<Picker.Item key={id} label={name} value={id} />);
           })}
-        </Select>
+        </Picker>
         {year >= 2004 && <View className="flex items-center gap-1">
-          <Checkbox className="!text-white !p-0" onChange={(e) => {setWindField(e.target.checked)}}/>
+          <Checkbox className="!text-white !p-0" onPress={(e) => {setWindField(!setWindField)}}/>
           <Text className="text-white font-bold">Wind Field</Text>
         </View>}
       </View>

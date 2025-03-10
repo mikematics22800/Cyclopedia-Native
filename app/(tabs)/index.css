@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Storm';
+  src: url('/storm.ttf') 
+}
+
+.storm-font {
+  font-family: Storm;
+}
+
+*::-webkit-scrollbar {
+  width: 0;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.spin {
+  animation: spin 2s linear infinite;
+}
+
+.button {
+  @apply h-10 font-bold rounded-lg text-white p-4 flex items-center justify-center gap-1
+}
+
+.select {
+  @apply bg-white !rounded-md h-10
+}
+
+ul li {
+  @apply rounded-lg p-3 flex justify-between text-sm
+}
+
+.storm, .season {
+  @apply flex flex-col items-center gap-10
+}
+
+.storm li {
+  @apply bg-blue-600
+}
+
+.season li {
+  @apply bg-purple-600
+}
+
+.charts {
+  @apply bg-white p-5 rounded-md flex flex-col gap-5 w-full max-w-[48rem]
+}
+
+
