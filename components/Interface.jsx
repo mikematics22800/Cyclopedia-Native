@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { Context } from "../app/(tabs)/index";
-import { ScrollView, View, Text } from 'react-native' 
+import { ScrollView, View, Text, Image, Button } from 'react-native' 
 import { Checkbox } from 'react-native-paper';
 import { Picker } from '@react-native-picker/picker';
 import cyclone from "../assets/images/cyclone.png"
@@ -36,15 +36,18 @@ const Interface = () => {
     <ScrollView className="xl:w-1/2 xl:h-full w-screen h-1/2 bg-blue-950 p-10 overflow-auto flex flex-col gap-10">
       <View className="flex justify-between w-full">
         <View className="flex items-center">
-          <Image src={cyclone} className="h-10 mr-2"/>
+          <Image source={cyclone} className="h-10 mr-2"/>
           <Text className="storm-font text-4xl text-white font-bold">CYCLOPEDIA</Text>
         </View>
-        <Button onClick={toggleStats} className={`button ${seasonStats ? 'bg-blue-600' : 'bg-purple-600'}`} variant="contained">
-          <Text className="font-sans font-bold">{seasonStats ? ("Storms") : ("Season")}</Text>
-        </Button>
+        <Button 
+          className={`h-10 font-bold rounded-lg text-white p-4 flex items-center justify-center ${seasonStats ? 'bg-blue-600' : 'bg-purple-600'}`}
+          onPress={toggleStats} 
+          title={seasonStats ? ("Storms") : ("Season")} 
+        />
       </View>
       <View className="flex gap-5 w-full justify-center">
       <Picker
+          className="bg-white !rounded-md h-10"
           selectedValue={basin}
           onValueChange={(itemValue) => setBasin(itemValue)}
           style={{ height: 50, width: 150 }}
@@ -53,6 +56,7 @@ const Interface = () => {
           <Picker.Item label="Pacific" value="pac" />
         </Picker>
         <Picker
+          className="bg-white !rounded-md h-10"
           selectedValue={year}
           onValueChange={(itemValue) => setYear(itemValue)}
           style={{ height: 50, width: 150 }}
@@ -63,6 +67,7 @@ const Interface = () => {
           })}
         </Picker>
         <Picker
+          className="bg-white !rounded-md h-10"
           selectedValue={stormId}
           onValueChange={(itemValue) => setStormId(itemValue)}
           style={{ height: 50, width: 150 }}

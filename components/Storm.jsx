@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from 'react'
 import { Context } from "../app/(tabs)/index";
-import { ScrollView, View, Text } from 'react-native' 
+import { ScrollView, View, Text, Image } from 'react-native' 
 import Intensity from './Intensity'
 import ACE from './ACE'
 import retiredImage from "../assets/images/retired.png"
@@ -125,7 +125,7 @@ const Storm = () => {
   }, [storm]);
 
   return (
-    <ScrollView className="storm">
+    <ScrollView className='flex flex-col items-center gap-10'>
       <View className='flex md:flex-row flex-col w-full items-center max-w-[48rem] justify-between gap-10'>
         <View className='flex flex-col gap-2'>
           <View
@@ -135,41 +135,42 @@ const Storm = () => {
             href={`https://www.nhc.noaa.gov/data/tcr/${stormId}.pdf`}
           >
             {image == "" && <View className='flex flex-col gap-5 items-center'>
-              <MaterialIcons name="cyclone" size={24} color="gray"/>              <Text className='text-2xl font-bold text-gray-600'>Image Unavailable</Text>
+              <MaterialIcons name="cyclone" size={24} color="gray"/>              
+              <Text className='text-2xl font-bold text-gray-600'>Image Unavailable</Text>
             </View>}
-            {retired && <img className='w-60' src={retiredImage}/>}
+            {retired && <Image className='w-60' source={retiredImage}/>}
           </View>
         </View>
         <View className='flex flex-col font-bold gap-1.5 text-white text-center w-full'>
           <Text className='text-3xl' style={{color:textColor}}>{stormName}</Text>
           <Text className='text-xl mb-1'>{duration}</Text>
-          <View>
+          <View className='rounded-lg p-3 flex justify-between text-sm bg-blue-600'>
             <Text>Maximum Wind</Text>
             <Text>{maxWind} kt</Text>
           </View>
-          {landfalls.length > 0 && <View>
+          {landfalls.length > 0 && <View className='rounded-lg p-3 flex justify-between text-sm bg-blue-600'>
             <Text>Maximum Inland Wind</Text>
             <Text>{inlandMaxWind} kt</Text>
           </View>}
-          <View>
+          <View className='rounded-lg p-3 flex justify-between text-sm bg-blue-600'>
             <Text>Minimum Pressure</Text>
             <Text>{minPressure != 9999 && minPressure != -999 ? (`${minPressure} mb`) : 'Unknown'}</Text>
           </View>
-          {landfalls.length > 0 && <View>
+          {landfalls.length > 0 && <View className='rounded-lg p-3 flex justify-between text-sm bg-blue-600'>
             <Text>Minimum Inland Pressure</Text>
             <Text>{inlandMinPressure ? (`${inlandMinPressure} mb`) : 'Unknown'}</Text>
           </View>}
-          <View>
+          <View className='rounded-lg p-3 flex justify-between text-sm bg-blue-600'>
             <Text>Dead/Missing</Text>
             <Text>{deadOrMissing}</Text>
           </View>
-          <View>
+          <View className='rounded-lg p-3 flex justify-between text-sm bg-blue-600'>
             <Text>Cost (Million USD)</Text>
             <Text>{cost}</Text>
           </View>
         </View>
       </View>
-      <View className="charts">
+      <View className="bg-white p-5 rounded-md flex flex-col gap-5 w-full max-w-[768px]">
         <Intensity/>
         <ACE/>
       </View>

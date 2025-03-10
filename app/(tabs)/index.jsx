@@ -1,5 +1,5 @@
 import { useState, useEffect, createContext } from "react"
-import "./index.css"
+import "./global.css"
 import { View, Image, Text } from "react-native"
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { getHurdat } from "../../libs/hurdat"
@@ -71,7 +71,7 @@ function App() {
             landfall = true
           }
         })
-        if (landfall == true) {
+        if (landfall === true) {
           landfallingStorms.push(storm)
         }
       })
@@ -89,7 +89,7 @@ function App() {
         const wind = point.max_wind_kt
         const hour = point.time_utc
         if (["TS", "SS", "HU"].includes(point.status)) {
-          if (hour % 600 == 0) {
+          if (hour % 600 === 0) {
             ACE += Math.pow(wind, 2)/10000
             if (windArray.length > 0) {
               const average = sum(windArray)/windArray.length
@@ -134,7 +134,7 @@ function App() {
         </View>
       ) : (
         <View className="w-screen h-screen flex flex-col items-center justify-center bg-blue-950 text-white gap-20">
-          <Image className="w-60 h-60 spin" src={cyclone}/>
+          <Image className="w-60 h-60 animate-spin" source={cyclone}/>
           <Text className="text-4xl font-bold storm-font">LOADING...</Text>
         </View>
       )}
