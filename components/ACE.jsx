@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react'
-import { Context } from '../App'
+import { Context } from "../app/(tabs)/index";
 import LineChart from './LineChart'
 import { sum } from '../libs/sum'
 

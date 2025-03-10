@@ -1,11 +1,10 @@
 import { useContext, useState, useEffect } from 'react'
-import { Context } from '../App'
+import { Context } from "../app/(tabs)/index";
 import { ScrollView, View, Text } from 'react-native' 
 import MaxWinds from './MaxWinds'
 import MinPressures from './MinPressures'
 import SeasonACE from './SeasonACE'
 import { sum } from '../libs/sum'
-
 
 const Season = () => {
   const {season, seasonACE} = useContext(Context)

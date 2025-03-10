@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { Context } from '../App'
+import { Context } from "../app/(tabs)/index";
 import BarChart from './BarChart'
 import { Dimensions } from 'react-native'
 

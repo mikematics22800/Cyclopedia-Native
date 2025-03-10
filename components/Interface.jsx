@@ -1,9 +1,9 @@
 import { useState, useEffect, useContext } from "react";
-import { Context } from "../App";
+import { Context } from "../app/(tabs)/index";
 import { ScrollView, View, Text } from 'react-native' 
 import { Checkbox } from 'react-native-paper';
 import { Picker } from '@react-native-picker/picker';
-import cyclone from "../../public/cyclone.png"
+import cyclone from "../assets/images/cyclone.png"
 import Storm from "./Storm";
 import Season from "./Season";
 

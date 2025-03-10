@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import MapView, { Marker, Polyline, Polygon, Callout } from "react-native-maps";
 import { View, Text, Button } from "react-native";
-import { Context } from "../App";
+import { Context } from "../app/(tabs)/index";
 import * as ScreenOrientation from 'expo-screen-orientation';
 
 const Map = () => {

@@ -1,10 +1,10 @@
 import { useContext, useState, useEffect } from 'react'
-import { Context } from '../App'
+import { Context } from "../app/(tabs)/index";
 import { ScrollView, View, Text } from 'react-native' 
 import Intensity from './Intensity'
 import ACE from './ACE'
-import retiredImage from "../../public/retired.png"
-import CycloneIcon from '@mui/icons-material/Cyclone'
+import retiredImage from "../assets/images/retired.png"
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 const Storm = () => {
   const { year, storm, stormId } = useContext(Context)
@@ -135,8 +135,7 @@ const Storm = () => {
             href={`https://www.nhc.noaa.gov/data/tcr/${stormId}.pdf`}
           >
             {image == "" && <View className='flex flex-col gap-5 items-center'>
-              <CycloneIcon className='text-gray-600 !text-8xl'/>
-              <Text className='text-2xl font-bold text-gray-600'>Image Unavailable</Text>
+              <MaterialIcons name="cyclone" size={24} color="gray"/>              <Text className='text-2xl font-bold text-gray-600'>Image Unavailable</Text>
             </View>}
             {retired && <img className='w-60' src={retiredImage}/>}
           </View>
