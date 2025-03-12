@@ -133,6 +133,7 @@ function App() {
         </View>
       ) : (
         <View className="w-screen h-screen flex flex-col items-center justify-center bg-blue-950 text-white gap-20">
+          <Image source={cyclone} className="w-40 h-40" />
           <Text className="text-4xl font-bold storm-font">LOADING...</Text>
         </View>
       )}
