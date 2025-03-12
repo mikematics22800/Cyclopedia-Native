@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react'
-import { Context } from "../app/(tabs)/index";
+import { Context } from "../App";
 import LineChart from './LineChart'
 import { Dimensions } from 'react-native'
 

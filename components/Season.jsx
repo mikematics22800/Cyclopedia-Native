@@ -1,9 +1,6 @@
 import { useContext, useState, useEffect } from 'react'
-import { Context } from "../app/(tabs)/index";
+import { Context } from "../App";
 import { ScrollView, View, Text } from 'react-native' 
-import MaxWinds from './MaxWinds'
-import MinPressures from './MinPressures'
-import SeasonACE from './SeasonACE'
 import { sum } from '../libs/sum'
 
 const Season = () => {
@@ -55,9 +52,7 @@ const Season = () => {
         </View>
       </View>
       <View className="bg-white p-5 rounded-md flex flex-col gap-5 w-full max-w-[768px]">
-        <MaxWinds/>
-        <MinPressures/>
-        <SeasonACE/>
+
       </View>
     </ScrollView>
   )

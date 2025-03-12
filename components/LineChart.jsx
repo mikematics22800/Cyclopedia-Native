@@ -2,14 +2,16 @@ import React from 'react';
 import { LineChart as RNLineChart } from 'react-native-chart-kit';
 import { Dimensions, View } from 'react-native';
 
-const screenWidth = Dimensions.get('window').width;
-
 const LineChart = ({ data, options }) => {
+  if (!data) {
+    return
+  }
+
   return (
     <View>
       <RNLineChart
         data={data}
-        width={screenWidth}
+        width={Dimensions.get('window').width}
         height={220}
         chartConfig={{
           backgroundColor: '#1cc910',

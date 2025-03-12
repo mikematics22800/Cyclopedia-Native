@@ -2,11 +2,10 @@ import { useState, useEffect, createContext } from "react"
 import "./global.css"
 import { View, Image, Text } from "react-native"
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { getHurdat } from "../../libs/hurdat"
-import Interface from "../../components/Interface"
-import Map from "../../components/Map"
-import cyclone from '../../assets/images/cyclone.png'
-import { sum } from "../../libs/sum"
+import getHurdat from "./libs/hurdat"
+import Interface from "./components/Interface"
+import cyclone from './assets/images/cyclone.png'
+import { sum } from "./libs/sum"
 
 export const Context = createContext()
 
@@ -59,6 +58,7 @@ function App() {
       })
       setDates(dates)
     }
+    console.warn(storm)
   }, [storm])
 
   useEffect(() => {
@@ -130,11 +130,9 @@ function App() {
       {season && storm ? (
         <View className="h-screen w-screen flex overflow-hidden xl:flex-row flex-col">
           <Interface/>
-          <Map/>
         </View>
       ) : (
         <View className="w-screen h-screen flex flex-col items-center justify-center bg-blue-950 text-white gap-20">
-          <Image className="w-60 h-60 animate-spin" source={cyclone}/>
           <Text className="text-4xl font-bold storm-font">LOADING...</Text>
         </View>
       )}

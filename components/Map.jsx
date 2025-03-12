@@ -1,28 +1,12 @@
 import React, { useContext, useState, useEffect } from "react";
 import MapView, { Marker, Polyline, Polygon, Callout } from "react-native-maps";
 import { View, Text, Button } from "react-native";
-import { Context } from "../app/(tabs)/index";
-import * as ScreenOrientation from 'expo-screen-orientation';
+import { Context } from "../App";
 
 const Map = () => {
   const { season, setStormId, storm, year, windField } = useContext(Context);
 
-  const [fullscreen, setFullscreen] = useState(false);
-
-  useEffect(() => {
-    const handleFullscreenChange = async () => {
-      if (!fullscreen) {
-        await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE);
-      } else {
-        await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
-      }
-    };
-
-    handleFullscreenChange();
-  }, [fullscreen]);
-
   const toggleFullscreen = () => {
-    setFullscreen(!fullscreen);
   };
 
   const storms = season.map((storm) => {

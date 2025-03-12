@@ -5,7 +5,7 @@ const options = {
   }
 }
 
-export const getHurdat = async (basin, year) => {
+const getHurdat = async (basin, year) => {
   try {
     const response = await fetch(`https://cyclopedia.onrender.com/${basin}/${year}`, options)
     const data = await response.json();
@@ -14,3 +14,5 @@ export const getHurdat = async (basin, year) => {
     console.error('Server error', err);
   }
 }
+
+export default getHurdat;

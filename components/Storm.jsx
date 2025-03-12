@@ -1,13 +1,13 @@
 import { useContext, useState, useEffect } from 'react'
-import { Context } from "../app/(tabs)/index";
+import { Context } from "../App";
 import { ScrollView, View, Text, Image } from 'react-native' 
-import Intensity from './Intensity'
-import ACE from './ACE'
 import retiredImage from "../assets/images/retired.png"
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 const Storm = () => {
   const { year, storm, stormId } = useContext(Context)
+
+  console.warn(storm)
 
   const [stormName, setStormName] = useState('')
   const [textColor, setTextColor] = useState('')
@@ -171,8 +171,7 @@ const Storm = () => {
         </View>
       </View>
       <View className="bg-white p-5 rounded-md flex flex-col gap-5 w-full max-w-[768px]">
-        <Intensity/>
-        <ACE/>
+
       </View>
     </ScrollView>
   )

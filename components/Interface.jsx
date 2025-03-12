@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { Context } from "../app/(tabs)/index";
+import { Context } from "../App";
 import { ScrollView, View, Text, Image, Button } from 'react-native' 
 import { Checkbox } from 'react-native-paper';
 import { Picker } from '@react-native-picker/picker';
