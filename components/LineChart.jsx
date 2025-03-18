@@ -2,11 +2,7 @@ import React from 'react';
 import { LineChart as RNLineChart } from 'react-native-chart-kit';
 import { Dimensions, View } from 'react-native';
 
-const LineChart = ({ data, options }) => {
-  if (!data) {
-    return
-  }
-
+const LineChart = ({ data }) => {
   return (
     <View>
       <RNLineChart
@@ -30,7 +26,6 @@ const LineChart = ({ data, options }) => {
           },
         }}
         bezier
-        {...options}
       />
     </View>
   );

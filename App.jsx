@@ -1,5 +1,6 @@
 import { useState, useEffect, createContext } from "react"
 import "./global.css"
+import { useFonts } from 'expo-font';
 import { View, Image, Text } from "react-native"
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import getHurdat from "./libs/hurdat"
@@ -10,6 +11,8 @@ import { sum } from "./libs/sum"
 export const Context = createContext()
 
 function App() {
+  useFonts({'storm-font': require('./assets/fonts/storm.ttf')});
+
   const [basin, setBasin] = useState('atl')
   const [year, setYear] = useState(2023)
   const [season, setSeason] = useState(null)
@@ -132,9 +135,9 @@ function App() {
           <Interface/>
         </View>
       ) : (
-        <View className="w-screen h-screen flex flex-col items-center justify-center bg-blue-950 text-white gap-20">
-          <Image source={cyclone} className="w-40 h-40" />
-          <Text className="text-4xl font-bold storm-font">LOADING...</Text>
+        <View className="w-screen h-screen flex flex-col items-center justify-center bg-blue-950">
+          <Image source={cyclone} className="!w-40 !h-40 animate-spin mb-20"/>
+          <Text className="text-white text-4xl" style={{fontFamily: 'storm-font'}}>LOADING...</Text>
         </View>
       )}
     </Context.Provider>

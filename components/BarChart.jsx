@@ -1,15 +1,13 @@
-import React from 'react';
+/* import React from 'react';
 import { BarChart as RNBarChart } from 'react-native-chart-kit';
 import { Dimensions, View } from 'react-native';
-
-const screenWidth = Dimensions.get('window').width;
 
 const BarChart = ({ data, options }) => {
   return (
     <View>
       <RNBarChart
         data={data}
-        width={screenWidth}
+        width={Dimensions.get('window').width}
         height={220}
         chartConfig={{
           backgroundColor: '#1cc910',
@@ -34,4 +32,4 @@ const BarChart = ({ data, options }) => {
   );
 };
 
-export default BarChart;
+export default BarChart */
