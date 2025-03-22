@@ -17,12 +17,12 @@ function App() {
   const [year, setYear] = useState(2023)
   const [season, setSeason] = useState(null)
   const [storm, setStorm] = useState(null)
-  const [stormId, setStormId] = useState('')
-  const [dates, setDates] = useState([])
-  const [landfallingStorms, setLandfallingStorms] = useState([])
+  const [stormId, setStormId] = useState(null)
+  const [dates, setDates] = useState(null)
+  const [landfallingStorms, setLandfallingStorms] = useState(null)
   const [windField, setWindField] = useState(false)
-  const [names, setNames] = useState([])
-  const [seasonACE, setSeasonACE] = useState([])
+  const [names, setNames] = useState(null)
+  const [seasonACE, setSeasonACE] = useState(null)
 
   useEffect(() => {
     if (year < 1949 && basin === 'pac') setYear(1949)
@@ -61,7 +61,6 @@ function App() {
       })
       setDates(dates)
     }
-    console.warn(storm)
   }, [storm])
 
   useEffect(() => {

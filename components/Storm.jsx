@@ -8,8 +8,6 @@ import Intensity from './Intensity'
 const Storm = () => {
   const { year, storm, stormId } = useContext(Context)
 
-  console.warn(storm)
-
   const [stormName, setStormName] = useState('')
   const [textColor, setTextColor] = useState('')
   const [retired, setRetired] = useState(false)
@@ -174,8 +172,7 @@ const Storm = () => {
           </View>
         </View>
       </View>
-      <View className="bg-white p-5 rounded-md flex flex-col gap-5 w-full max-w-[768px]">
-      </View>
+      <Intensity/>
     </ScrollView>
   )
 }

@@ -1,35 +1,16 @@
-/* import React from 'react';
-import { BarChart as RNBarChart } from 'react-native-chart-kit';
-import { Dimensions, View } from 'react-native';
+import { CartesianChart, Bar } from "victory-native";
 
-const BarChart = ({ data, options }) => {
+export function MyChart({data}) {
   return (
-    <View>
-      <RNBarChart
-        data={data}
-        width={Dimensions.get('window').width}
-        height={220}
-        chartConfig={{
-          backgroundColor: '#1cc910',
-          backgroundGradientFrom: '#eff3ff',
-          backgroundGradientTo: '#efefef',
-          decimalPlaces: 2,
-          color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
-          labelColor: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
-          style: {
-            borderRadius: 16,
-          },
-          propsForDots: {
-            r: '6',
-            strokeWidth: '2',
-            stroke: '#ffa726',
-          },
-        }}
-        verticalLabelRotation={30}
-        {...options}
-      />
-    </View>
+    <CartesianChart data={data} xKey="x" yKeys={["y"]}>
+      {({ points, chartBounds }) => (
+        <Bar
+          points={points.y}
+          chartBounds={chartBounds}
+          color="red"
+          roundedCorners={{ topLeft: 10, topRight: 10 }}
+        />
+      )}
+    </CartesianChart>
   );
-};
-
-export default BarChart */
+}
